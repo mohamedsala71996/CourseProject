@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
             $table->foreignId('lecture_id')->constrained('lectures')->onDelete('cascade');
             $table->text('question_text');
-            $table->foreignId('correct_option_id')->constrained('options')->onDelete('cascade');
+            // $table->foreignId('correct_option_id')->constrained('options')->onDelete('cascade'); remove this line
             $table->text('read_text')->nullable();
             $table->string('video')->nullable();
             $table->string('record')->nullable();

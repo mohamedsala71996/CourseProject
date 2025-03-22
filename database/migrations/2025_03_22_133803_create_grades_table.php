@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('total_score', 5, 2);
             $table->decimal('max_score', 5, 2);
             $table->decimal('percentage', 5, 2)->storedAs('(total_score / max_score) * 100');
-            $table->enum('status', ['pass', 'fail'])->storedAs('(percentage >= 50) ? "pass" : "fail"');
+            $table->enum('status', ['pass', 'fail'])->storedAs('(CASE WHEN (total_score / max_score * 100) >= 50 THEN "pass" ELSE "fail" END)'); //edit this line
             $table->timestamps();
         });
     }
