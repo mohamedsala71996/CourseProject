@@ -8,5 +8,3 @@ Route::get('/', function () {
 });
 //
 
-Route::resource('subjects', SubjectController::class);
-Route::get('/get-sub-stages/{stage_id}', [SubjectController::class, 'getSubStages']);
