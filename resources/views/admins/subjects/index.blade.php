@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <a href="{{ route('admin.subjects.create') }}" class="btn btn-success">إضافة مادة جديدة</a>
+                        <a href="{{ route('subjects.create') }}" class="btn btn-success">إضافة مادة جديدة</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
@@ -30,8 +30,8 @@
                                         <td>{{ $subject->desc ?? 'لا يوجد وصف' }}</td>
                                         <td>{{ $subject->subStage->stage->name .': '. $subject->subStage->name  }}</td>
                                         <td>
-                                            <a href="{{ route('admin.subjects.edit', $subject->id) }}" class="btn btn-sm btn-warning">تعديل</a>
-                                            <form action="{{ route('admin.subjects.destroy', $subject->id) }}" method="POST" class="d-inline delete-form">
+                                            <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-sm btn-warning">تعديل</a>
+                                            <form action="{{ route('subjects.destroy', $subject->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger delete-btn">حذف</button>
