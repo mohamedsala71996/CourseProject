@@ -12,7 +12,7 @@
                         <h3 class="card-title">إضافة مادة دراسية جديدة</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('subjects.store') }}" method="POST">
+                        <form action="{{ route('admin.subjects.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="stage" class="form-label">المرحلة الدراسية</label>
@@ -42,7 +42,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-success">حفظ</button>
-                            <a href="{{ route('subjects.index') }}" class="btn btn-secondary">إلغاء</a>
+                            <a href="{{ route('admin.subjects.index') }}" class="btn btn-secondary">إلغاء</a>
                         </form>
                     </div>
                 </div>
