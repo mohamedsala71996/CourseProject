@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admins;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admins\SubjectRequest;
@@ -29,7 +29,7 @@ class SubjectController extends Controller
         try {
 
             Subject::create($request->all());
-            return redirect()->route('subjects.index')->with('success', 'تم إضافة المادة بنجاح.');
+            return redirect()->route('admin.subjects.index')->with('success', 'تم إضافة المادة بنجاح.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء إضافة المادة.');
         }
@@ -47,7 +47,7 @@ class SubjectController extends Controller
 
             $subject->update($request->all());
 
-            return redirect()->route('subjects.index')->with('success', 'تم تحديث المادة بنجاح.');
+            return redirect()->route('admin.subjects.index')->with('success', 'تم تحديث المادة بنجاح.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء تحديث المادة.');
         }

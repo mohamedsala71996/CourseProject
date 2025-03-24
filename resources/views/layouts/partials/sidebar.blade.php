@@ -66,24 +66,17 @@
                           </a>
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                  <a href="{{ route('subjects.index') }}"
-                                      class="nav-link {{ request()->routeIs('subjects.index') || request()->routeIs('subjects.edit') ? 'active' : '' }}">
+                                  <a href="{{ route('admin.subjects.index') }}"
+                                      class="nav-link {{ request()->routeIs('admin.subjects.index') || request()->routeIs('subjects.edit') ? 'active' : '' }}">
                                       <i class="nav-icon bi bi-grid-fill"></i> <!-- "All Subjects" Icon -->
                                       <p>الكل</p>
-                                  </a>
-                              </li>
-                              <li class="nav-item">
-                                  <a href="{{ route('subjects.create') }}"
-                                      class="nav-link {{ request()->routeIs('subjects.create') ? 'active' : '' }}">
-                                      <i class="nav-icon bi bi-plus-circle-fill"></i> <!-- "Add Subject" Icon -->
-                                      <p>إضافة</p>
                                   </a>
                               </li>
                           </ul>
                       </li>
 
 
-                      {{-- 
+                      {{--
                       <li class="nav-item menu-open">
                           <a href="#" class="nav-link active">
                               <i class="nav-icon bi bi-clipboard-fill"></i>

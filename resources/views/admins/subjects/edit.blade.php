@@ -12,7 +12,7 @@
                         <h3 class="card-title">تعديل المادة الدراسية</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('subjects.update', $subject->id) }}" method="POST">
+                        <form action="{{ route('admin.subjects.update', $subject->id) }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -46,7 +46,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-success">تحديث</button>
-                            <a href="{{ route('subjects.index') }}" class="btn btn-secondary">إلغاء</a>
+                            <a href="{{ route('admin.subjects.index') }}" class="btn btn-secondary">إلغاء</a>
                         </form>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
 
         function loadSubStages(stageId, selectedSubStage = null) {
             subStageSelect.innerHTML = '<option value="">جارٍ التحميل...</option>';
-            
+
             if (stageId) {
                 fetch(`/get-sub-stages/${stageId}`)
                     .then(response => response.json())

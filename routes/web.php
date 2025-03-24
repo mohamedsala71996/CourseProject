@@ -1,12 +1,20 @@
 <?php
 
-use App\Http\Controllers\admins\SubjectController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-//
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [UserAuthController::class, 'showLoginForm'])->name('user.login');
+    Route::post('/login', [UserAuthController::class, 'login'])->name('user.login.submit');
 
-Route::resource('subjects', SubjectController::class);
-Route::get('/get-sub-stages/{stage_id}', [SubjectController::class, 'getSubStages']);
+    Route::get('/register', [UserAuthController::class, 'showRegisterForm'])->name('user.register');
+    Route::post('/register', [UserAuthController::class, 'register'])->name('user.register.submit');
+});
+
+Route::middleware('auth:web')->group(function () {
+    Route::get('/', fn() => view('user.dashboard'))->name('user.dashboard');
+    Route::post('/logout', [UserAuthController::class, 'logout'])->name('user.logout');
+});
+
