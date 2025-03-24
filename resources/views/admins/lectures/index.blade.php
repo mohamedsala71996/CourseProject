@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'قائمة المواد الدراسية')
+@section('title', 'قائمة المحاضرات')
 
 @section('content')
 <div class="app-content">
@@ -9,29 +9,31 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <a href="{{ route('subjects.create') }}" class="btn btn-success">إضافة مادة جديدة</a>
+                        <a href="{{ route('lectures.create') }}" class="btn btn-success">إضافة محاضرة جديدة</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>اسم المادة</th>
+                                    <th>اسم المحاضرة</th>
                                     <th>الوصف</th>
+                                    <th>المادة الدراسية</th>
                                     <th>المرحلة الدراسية</th>
                                     <th>الإجراءات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($subjects as $subject)
+                                @forelse ($lectures as $lecture)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $subject->name }}</td>
-                                        <td>{{ $subject->desc ?? 'لا يوجد وصف' }}</td>
-                                        <td>{{ $subject->subStage->stage->name .': '. $subject->subStage->name  }}</td>
+                                        <td>{{ $lecture->name }}</td>
+                                        <td>{{ $lecture->desc ?? 'لا يوجد وصف' }}</td>
+                                        <td>{{ $lecture->subject->name ?? 'غير متوفر' }}</td>
+                                        <td>{{ $lecture->subStage->stage->name .': '. $lecture->subStage->name  }}</td>
                                         <td>
-                                            <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-sm btn-warning">تعديل</a>
-                                            <form action="{{ route('subjects.destroy', $subject->id) }}" method="POST" class="d-inline delete-form">
+                                            <a href="{{ route('lectures.edit', $lecture->id) }}" class="btn btn-sm btn-warning">تعديل</a>
+                                            <form action="{{ route('lectures.destroy', $lecture->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger delete-btn">حذف</button>
@@ -40,14 +42,14 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="text-center text-muted">لا توجد مواد دراسية متاحة</td>
+                                        <td colspan="6" class="text-center text-muted">لا توجد محاضرات متاحة</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
                     </div>
                     <div class="card-footer clearfix">
-                        {{ $subjects->links('pagination::bootstrap-5') }}
+                        {{ $lectures->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

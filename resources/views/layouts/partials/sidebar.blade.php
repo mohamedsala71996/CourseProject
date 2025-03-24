@@ -58,7 +58,7 @@
               </li> --}}
                       <li class="nav-item {{ request()->routeIs('subjects.*') ? 'menu-open' : '' }}">
                           <a href="#" class="nav-link {{ request()->routeIs('subjects.*') ? 'active' : '' }}">
-                              <i class="nav-icon bi bi-layers-fill"></i> <!-- Main Icon -->
+                              <i class="nav-icon bi bi-layers-fill"></i> 
                               <p>
                                   المواد
                                   <i class="nav-arrow bi bi-chevron-right"></i>
@@ -68,19 +68,45 @@
                               <li class="nav-item">
                                   <a href="{{ route('subjects.index') }}"
                                       class="nav-link {{ request()->routeIs('subjects.index') || request()->routeIs('subjects.edit') ? 'active' : '' }}">
-                                      <i class="nav-icon bi bi-grid-fill"></i> <!-- "All Subjects" Icon -->
+                                      <i class="nav-icon bi bi-grid-fill"></i>
                                       <p>الكل</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('subjects.create') }}"
                                       class="nav-link {{ request()->routeIs('subjects.create') ? 'active' : '' }}">
-                                      <i class="nav-icon bi bi-plus-circle-fill"></i> <!-- "Add Subject" Icon -->
+                                      <i class="nav-icon bi bi-plus-circle-fill"></i>
                                       <p>إضافة</p>
                                   </a>
                               </li>
                           </ul>
                       </li>
+                      <li class="nav-item {{ request()->routeIs('lectures.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('lectures.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-book-fill"></i>
+                            <p>
+                                المحاضرات
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('lectures.index') }}" 
+                                    class="nav-link {{ request()->routeIs('lectures.index') || request()->routeIs('lectures.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i> 
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('lectures.create') }}" 
+                                    class="nav-link {{ request()->routeIs('lectures.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
 
 
                       {{-- 

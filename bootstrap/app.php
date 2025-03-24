@@ -12,9 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         // Define additional route groups here
         then: function () {
-            Route::namespace('Admin')
-                ->prefix('admin')
-                ->group(base_path('routes/admin.php'));
+            Route::middleware('web')->group(base_path('routes/admin.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {

@@ -35,18 +35,19 @@ class SubjectController extends Controller
         }
     }
 
-    public function edit(Subject $subject)
+    public function edit($id)
     {
+        $subject = Subject::find($id);
         $stages = Stage::all();
         return view('admins.subjects.edit', compact('subject', 'stages'));
     }
 
-    public function update(SubjectRequest $request, Subject $subject)
+    public function update(SubjectRequest $request, $id)
     {
         try {
-
+            $subject = Subject::find($id);
             $subject->update($request->all());
-
+            
             return redirect()->route('subjects.index')->with('success', 'تم تحديث المادة بنجاح.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء تحديث المادة.');
@@ -69,5 +70,11 @@ class SubjectController extends Controller
     {
         $subStages = SubStage::where('stage_id', $stage_id)->get();
         return response()->json(['subStages' => $subStages]);
+    }
+
+    public function getSubjects($sub_stage_id)
+    {
+        $subjects = Subject::where('sub_stage_id', $sub_stage_id)->get();
+        return response()->json(['subjects' => $subjects]);
     }
 }

@@ -15,16 +15,6 @@
                         <form action="{{ route('subjects.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-label">اسم المادة</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="desc" class="form-label">الوصف</label>
-                                <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
-                            </div>
-
-                            <div class="mb-3">
                                 <label for="stage" class="form-label">المرحلة الدراسية</label>
                                 <select name="stage_id" id="stage" class="form-control" required>
                                     <option value="">اختر المرحلة</option>
@@ -39,6 +29,16 @@
                                 <select name="sub_stage_id" id="sub_stage" class="form-control" required>
                                     <option value="">اختر المرحلة الفرعية</option>
                                 </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="name" class="form-label">اسم المادة</label>
+                                <input type="text" name="name" id="name" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="desc" class="form-label">الوصف</label>
+                                <textarea name="desc" id="desc" class="form-control" rows="3"></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-success">حفظ</button>
