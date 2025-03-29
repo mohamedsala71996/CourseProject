@@ -4,9 +4,10 @@ use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\SubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\StudentController;
 
 Route::prefix('admin')->group(function () {
-    
+
     Route::middleware('guest:admin')->group(function () {
         Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
         Route::post('/login', [AuthController::class, 'login'])->name('admin.login.submit');
@@ -23,7 +24,9 @@ Route::prefix('admin')->group(function () {
         // lectures
         Route::resource('lectures', LectureController::class);
 
-        
+        //students
+        Route::resource('students', StudentController::class);
+
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });
 });

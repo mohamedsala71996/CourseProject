@@ -12,7 +12,7 @@ class CustomAuthenticate extends Middleware
             if ($request->is('admin') || $request->is('admin/*')) {
                 return route('admin.login');
             }
-            return route('user.login');
+            return route('student.login');
         }
         return null;
     }
