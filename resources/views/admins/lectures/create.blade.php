@@ -9,21 +9,16 @@
         <div class="card-body">
             <form action="{{ route('lectures.store') }}" method="POST">
                 @csrf
-
-                <div class="mb-3">
-                    <label for="stage" class="form-label">المرحلة الدراسية</label>
-                    <select name="stage_id" id="stage" class="form-control" required>
-                        <option value="">اختر المرحلة</option>
-                        @foreach ($stages as $stage)
-                            <option value="{{ $stage->id }}">{{ $stage->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 
                 <div class="mb-3">
                     <label for="sub_stage" class="form-label">المرحلة الفرعية</label>
                     <select name="sub_stage_id" id="sub_stage" class="form-control" required>
                         <option value="">اختر المرحلة الفرعية</option>
+                        @foreach ($subStages as $subStage)
+                        <option value="{{ $subStage->id }}" {{ old('sub_stage_id') == $subStage->id ? 'selected' : '' }}>
+                            {{ $subStage->stage->name }}: {{ $subStage->name }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
                 
@@ -58,36 +53,13 @@
         const subStageSelect = document.getElementById('sub_stage');
         const subjectSelect = document.getElementById('subject');
 
-        // عند اختيار المرحلة الدراسية، يتم تحميل المراحل الفرعية
-        stageSelect.addEventListener('change', function () {
-            const stageId = this.value;
-            subStageSelect.innerHTML = '<option value="">جارٍ التحميل...</option>';
-            subjectSelect.innerHTML = '<option value="">اختر المادة الدراسية</option>'; // إعادة تعيين المواد
-
-            if (stageId) {
-                fetch(`/get-sub-stages/${stageId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        subStageSelect.innerHTML = '<option value="">اختر المرحلة الفرعية</option>';
-                        data.subStages.forEach(subStage => {
-                            subStageSelect.innerHTML += `<option value="${subStage.id}">${subStage.name}</option>`;
-                        });
-                    })
-                    .catch(error => {
-                        subStageSelect.innerHTML = '<option value="">حدث خطأ، حاول مرة أخرى</option>';
-                    });
-            } else {
-                subStageSelect.innerHTML = '<option value="">اختر المرحلة الفرعية</option>';
-            }
-        });
-
         // عند اختيار المرحلة الفرعية، يتم تحميل المواد الدراسية
         subStageSelect.addEventListener('change', function () {
             const subStageId = this.value;
             subjectSelect.innerHTML = '<option value="">جارٍ التحميل...</option>';
 
             if (subStageId) {
-                fetch(`/get-subjects/${subStageId}`)
+                fetch(`/admin/get-subjects/${subStageId}`)
                     .then(response => response.json())
                     .then(data => {
                         subjectSelect.innerHTML = '<option value="">اختر المادة الدراسية</option>';

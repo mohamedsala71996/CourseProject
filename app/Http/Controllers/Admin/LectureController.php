@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admins\LectureRequest;
 use App\Models\Lecture;
 use App\Models\Stage;
 use App\Models\Subject;
@@ -19,18 +20,12 @@ class LectureController extends Controller
 
     public function create()
     {
-        $stages = Stage::all();
-        return view('admins.lectures.create', compact('stages'));
+        $subStages = SubStage::all();
+        return view('admins.lectures.create', compact('subStages'));
     }
 
-    public function store(Request $request)
+    public function store(LectureRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'desc' => 'nullable|string',
-            'subject_id' => 'required|exists:subjects,id',
-        ]);
-
         Lecture::create($request->all());
 
         return redirect()->route('lectures.index')->with('success', 'تم إضافة المحاضرة بنجاح.');
@@ -39,18 +34,12 @@ class LectureController extends Controller
     public function edit( $id)
     {
         $lecture = Lecture::find($id);
-        $stages = Stage::all();
-        return view('admins.lectures.edit', compact('lecture', 'stages'));
+        $subStages = SubStage::all();
+        return view('admins.lectures.edit', compact('lecture', 'subStages'));
     }
 
-    public function update(Request $request, Lecture $lecture)
+    public function update(LectureRequest $request, Lecture $lecture)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'desc' => 'nullable|string',
-            'subject_id' => 'required|exists:subjects,id',
-        ]);
-
         $lecture->update($request->all());
 
         return redirect()->route('lectures.index')->with('success', 'تم تحديث المحاضرة بنجاح.');

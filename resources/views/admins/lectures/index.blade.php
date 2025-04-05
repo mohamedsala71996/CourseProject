@@ -32,6 +32,7 @@
                                         <td>{{ $lecture->subject->name ?? 'غير متوفر' }}</td>
                                         <td>{{ $lecture->subStage->stage->name .': '. $lecture->subStage->name  }}</td>
                                         <td>
+                                            <a target="_blank" style="color: white" href="{{ route('lectures.questions.index', $lecture->id) }}" class="btn btn-sm btn-info">عرض الأسئلة</a>
                                             <a href="{{ route('lectures.edit', $lecture->id) }}" class="btn btn-sm btn-warning">تعديل</a>
                                             <form action="{{ route('lectures.destroy', $lecture->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf

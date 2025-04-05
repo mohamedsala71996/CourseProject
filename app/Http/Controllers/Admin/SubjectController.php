@@ -20,8 +20,8 @@ class SubjectController extends Controller
     // Show the form for creating a new subject
     public function create()
     {
-        $stages = Stage::all();
-        return view('admins.subjects.create', compact('stages'));
+        $subStages = SubStage::all();
+        return view('admins.subjects.create', compact('subStages'));
     }
 
     public function store(SubjectRequest $request)
@@ -38,8 +38,8 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $subject = Subject::find($id);
-        $stages = Stage::all();
-        return view('admins.subjects.edit', compact('subject', 'stages'));
+        $subStages = SubStage::all();
+        return view('admins.subjects.edit', compact('subject', 'subStages'));
     }
 
     public function update(SubjectRequest $request, $id)
@@ -66,11 +66,11 @@ class SubjectController extends Controller
         }
     }
 
-    public function getSubStages($stage_id)
-    {
-        $subStages = SubStage::where('stage_id', $stage_id)->get();
-        return response()->json(['subStages' => $subStages]);
-    }
+    // public function getSubStages($stage_id)
+    // {
+    //     $subStages = SubStage::where('stage_id', $stage_id)->get();
+    //     return response()->json(['subStages' => $subStages]);
+    // }
 
     public function getSubjects($sub_stage_id)
     {

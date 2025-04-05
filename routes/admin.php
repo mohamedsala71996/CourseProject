@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\SubjectController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\StudentController;
 
 Route::prefix('admin')->group(function () {
@@ -23,6 +24,15 @@ Route::prefix('admin')->group(function () {
 
         // lectures
         Route::resource('lectures', LectureController::class);
+
+        // questions
+        // Route::resource('lectures', QuestionController::class);
+        Route::get('/lectures/{lecture}/questions', [QuestionController::class, 'index'])->name('lectures.questions.index');
+        Route::get('/lectures/{lecture}/questions/create', [QuestionController::class, 'create'])->name('lectures.questions.create');
+        Route::post('/lectures/{lecture}/questions', [QuestionController::class, 'store'])->name('lectures.questions.store');
+        Route::get('/lectures/{lecture}/questions/{question}/edit', [QuestionController::class, 'edit'])->name('lectures.questions.edit');
+        Route::put('/lectures/{lecture}/questions/{question}', [QuestionController::class, 'update'])->name('lectures.questions.update');
+        Route::delete('/lectures/{lecture}/questions/{question}', [QuestionController::class, 'destroy'])->name('lectures.questions.destroy');
 
         //students
         Route::resource('students', StudentController::class);

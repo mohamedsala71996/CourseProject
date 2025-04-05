@@ -67,7 +67,7 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="{{ route('subjects.index') }}"
-                                      class="nav-link {{ request()->routeIs('subjects.index') || request()->routeIs('subjects.edit') ? 'active' : '' }}">
+                                      class="nav-link {{ request()->routeIs('subjects.index') || request()->routeIs('subjects.edit')  ? 'active' : '' }}">
                                       <i class="nav-icon bi bi-grid-fill"></i>
                                       <p>الكل</p>
                                   </a>
@@ -92,7 +92,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('lectures.index') }}"
-                                    class="nav-link {{ request()->routeIs('lectures.index') || request()->routeIs('lectures.edit') ? 'active' : '' }}">
+                                    class="nav-link {{ request()->routeIs('lectures.index') || request()->routeIs('lectures.edit') || request()->routeIs('lectures.questions.index') || request()->routeIs('lectures.questions.edit') || request()->routeIs('lectures.questions.create') ? 'active' : '' }}">
                                     <i class="nav-icon bi bi-grid-fill"></i>
                                     <p>الكل</p>
                                 </a>
