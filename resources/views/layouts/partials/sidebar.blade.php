@@ -132,8 +132,82 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item {{ request()->routeIs('stages.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('stages.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
+                            <p>
+                                 تسجيل مرحلة
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('stages.index') }}"
+                                   class="nav-link {{ request()->routeIs('stages.index') || request()->routeIs('stages.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('stages.create') }}"
+                                   class="nav-link {{ request()->routeIs('stages.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item {{ request()->routeIs('sub_stages.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('sub_stages.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
+                            <p>
+                                فرعية تسجيل مرحلة
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('sub_stages.index') }}"
+                                   class="nav-link {{ request()->routeIs('sub_stages.index') || request()->routeIs('sub_stages.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('sub_stages.create') }}"
+                                   class="nav-link {{ request()->routeIs('sub_stages.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-
+                    <li class="nav-item {{ request()->routeIs('fines.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('fines.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
+                            <p>
+                                 تسجيل غرامة
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('fines.index') }}"
+                                   class="nav-link {{ request()->routeIs('fines.index') || request()->routeIs('fines.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('fines.create') }}"
+                                   class="nav-link {{ request()->routeIs('fines.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                       {{--
                       <li class="nav-item menu-open">
                           <a href="#" class="nav-link active">
