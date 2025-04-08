@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\StageController;
+use App\Http\Controllers\Admin\SubStageController;
+use App\Http\Controllers\Admin\FineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\QuestionController;
@@ -34,6 +37,14 @@ Route::prefix('admin')->group(function () {
         Route::put('/lectures/{lecture}/questions/{question}', [QuestionController::class, 'update'])->name('lectures.questions.update');
         Route::delete('/lectures/{lecture}/questions/{question}', [QuestionController::class, 'destroy'])->name('lectures.questions.destroy');
 
+        // stages
+        Route::resource('stages', StageController::class);
+
+        // substages
+        Route::resource('sub_stages', SubStageController::class);
+
+
+        Route::resource('fines', FineController::class);
         //students
         Route::resource('students', StudentController::class);
 
