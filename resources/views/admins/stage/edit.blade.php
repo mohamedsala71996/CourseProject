@@ -9,14 +9,14 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label class="form-label">Name:</label>
+                <label class="form-label">إسم المرحلة:</label>
                 <input type="text" name="name" class="form-control" value="{{ $stage->name }}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Description:</label>
+                <label class="form-label">الوصف:</label>
                 <textarea name="desc" class="form-control">{{ $stage->desc }}</textarea>
             </div>
-            <button type="submit" class="btn btn-success">Update</button>
+            <button type="submit" class="btn btn-success">تحديث</button>
         </form>
     </div>
 @endsection

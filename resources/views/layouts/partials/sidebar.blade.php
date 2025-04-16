@@ -161,7 +161,7 @@
                         <a href="#" class="nav-link {{ request()->routeIs('sub_stages.*') ? 'active' : '' }}">
                             <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
                             <p>
-                                فرعية تسجيل مرحلة
+                                 تسجيل مرحلة فرعية
                                 <i class="nav-arrow bi bi-chevron-right"></i>
                             </p>
                         </a>
@@ -185,7 +185,7 @@
 
                     <li class="nav-item {{ request()->routeIs('fines.*') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ request()->routeIs('fines.*') ? 'active' : '' }}">
-                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
+                        <i class="fa-solid fa-money-bill-1-wave"></i> {{-- أيقونة  --}}
                             <p>
                                  تسجيل غرامة
                                 <i class="nav-arrow bi bi-chevron-right"></i>
@@ -206,6 +206,26 @@
                                     <p>إضافة</p>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item {{ request()->routeIs('fines.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('fines.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-gears"></i>{{-- أيقونة  --}}
+                            <p>
+                                 الإعدادات
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('settings.index') }}"
+                                   class="nav-link {{ request()->routeIs('settings.index') || request()->routeIs('fines.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
                       {{--

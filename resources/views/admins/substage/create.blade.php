@@ -8,23 +8,23 @@
         <form action="{{ route('sub_stages.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label>Name</label>
+                <label>إسم المرحلة</label>
                 <input type="text" name="name" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label>Description</label>
+                <label>الوصف</label>
                 <textarea name="desc" class="form-control"></textarea>
             </div>
             <div class="mb-3">
-                <label>Stage</label>
+                <label>المرحلة</label>
                 <select name="stage_id" class="form-control" required>
                     @foreach($stages as $stage)
                         <option value="{{ $stage->id }}">{{ $stage->name }}</option>
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-success">Save</button>
-            <a href="{{ route('sub_stages.index') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-success">إضافة</button>
+            <a href="{{ route('sub_stages.index') }}" class="btn btn-secondary">إلغاء</a>
         </form>
     </div>
 @endsection

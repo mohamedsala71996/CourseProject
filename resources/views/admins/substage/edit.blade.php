@@ -20,7 +20,7 @@
                             @method('PUT')
               
                             <div class="mb-3">
-                                <label for="name" class="form-label">اسم المادة</label>
+                                <label for="name" class="form-label">اسم المرحلة</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{ $subStage->name }}" required>
                             </div>
 

@@ -16,11 +16,11 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Student</th>
-                                        <th>Amount</th>
-                                        <th>Reason</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>إسم الطالب</th>
+                                        <th>مبلغ الغرامة</th>
+                                        <th>السبب</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,7 +31,7 @@
                                             <td>{{ $fine->reason }}</td>
                                             <td>{{ $fine->status }}</td>
                                             <td>
-                                                <a href="{{ route('fines.edit', $fine) }}" class="btn btn-sm btn-warning">Edit</a>
+                                                <a href="{{ route('fines.edit', $fine) }}" class="btn btn-sm btn-warning">تعديل</a>
                                                 <form action="{{ route('fines.destroy', $fine) }}" method="POST" class="d-inline delete-form">
 
                                                 @csrf

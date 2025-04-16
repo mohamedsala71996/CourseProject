@@ -8,8 +8,9 @@ use App\Http\Controllers\Admin\FineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\QuestionController;
-use App\Http\Controllers\Admin\StudentController;
 
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\SettingController;
 Route::prefix('admin')->group(function () {
 
     Route::middleware('guest:admin')->group(function () {
@@ -42,8 +43,10 @@ Route::prefix('admin')->group(function () {
 
         // substages
         Route::resource('sub_stages', SubStageController::class);
-
-
+        //setting
+        Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
+        //fines
         Route::resource('fines', FineController::class);
         //students
         Route::resource('students', StudentController::class);
