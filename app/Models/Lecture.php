@@ -19,4 +19,13 @@ class Lecture extends Model
     {
         return $this->belongsTo(SubStage::class);
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
 }
