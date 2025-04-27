@@ -27,4 +27,16 @@ class Question extends Model
     {
         return $this->hasMany(Option::class);
     }
+
+    public function studentAnswers()
+    {
+        return $this->hasMany(StudentAnswer::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'student_answers')
+            ->using(StudentAnswer::class)
+            ->withPivot(['option_id', 'is_correct']);
+    }
 }

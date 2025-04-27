@@ -9,6 +9,18 @@
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <form method="GET" class="form-inline">
+                                <select name="sub_stage_id" class="form-select me-2" onchange="this.form.submit()">
+                                    <option value="">جميع المراحل</option>
+                                            @foreach($subStages as $subStage)
+                                                <option value="{{ $subStage->id }}" {{ request('sub_stage_id') == $subStage->id ? 'selected' : '' }}>
+                                                    {{ $subStage->stage->name }}: {{ $subStage->name }}  
+                                                </option>
+                                            @endforeach
+                                </select>
+                            </form>
+                        </div>
                         <a href="{{ route('students.create') }}" class="btn btn-success">إضافة طالب جديد</a>
                     </div>
                     <div class="card-body">
@@ -48,6 +60,7 @@
                                             @endif
                                         </td>
                                         <td>
+                                            <a target="_blank" style="color: white" href="{{ route('students.show', $student->id) }}" class="btn btn-sm btn-info">كشف الدرجات</a>
                                             <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-warning">تعديل</a>
                                             <form action="{{ route('students.destroy', $student->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf

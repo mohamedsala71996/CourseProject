@@ -28,5 +28,9 @@ class Lecture extends Model
     public function questions()
     {
         return $this->hasMany(\App\Models\Question::class, 'lecture_id');
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
     }
 }

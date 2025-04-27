@@ -26,7 +26,24 @@ class Student extends Authenticatable
 
     public function subStage()
     {
-        return $this->belongsTo(SubStage::class);
+        return $this->belongsTo(SubStage::class)->with('stage');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(StudentAnswer::class);
+    }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+
+    public function lectures()
+    {
+        return $this->belongsToMany(Lecture::class, 'grades')
+            ->using(Grade::class)
+            ->withPivot(['total_score', 'max_score', 'percentage', 'status']);
     }
 
     public function getGenderLabelAttribute()

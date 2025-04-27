@@ -12,8 +12,17 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::latest()->paginate(10);
-        return view('admins.students.index', compact('students'));
+        $subStages = SubStage::with('stage')->get();
+        $subStageId = request('sub_stage_id');
+        
+        $students = Student::when($subStageId, function($query) use ($subStageId) {
+                return $query->where('sub_stage_id', $subStageId);
+            })
+            ->with('subStage.stage')
+            ->latest()
+            ->paginate(10);
+    
+        return view('admins.students.index', compact('students', 'subStages'));
     }
 
     public function create()
@@ -37,6 +46,19 @@ class StudentController extends Controller
     return redirect()->route('students.index')->with('success', 'تم إضافة الطالب بنجاح.');
 }
 
+    public function show(Student $student)
+    {
+        $student->load([
+            'subStage.subjects.lectures' => function($query) {
+                $query->with(['questions.options', 'grades']);
+            },
+            'answers' => function($query) {
+                $query->with('option.question');
+            }
+        ]);
+        
+        return view('admins.students.show', compact('student'));
+    }
 
     public function edit(Student $student)
     {
@@ -78,4 +100,5 @@ class StudentController extends Controller
 
         return redirect()->route('students.index')->with('success', 'تم حذف الطالب بنجاح.');
     }
+
 }
