@@ -19,4 +19,14 @@ class Lecture extends Model
     {
         return $this->belongsTo(SubStage::class);
     }
+
+    public function views()
+    {
+        return $this->hasMany(LessonView::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(\App\Models\Question::class, 'lecture_id');
+    }
 }

@@ -22,8 +22,8 @@ class QuestionRequest extends FormRequest
         return [
             'question_text' => 'required|string',
             'read_text' => 'nullable|string',
-            'video' => 'nullable|file|mimes:mp4,avi,mov|max:10240', // Max 10MB
-            'record' => 'nullable|file|mimes:mp3,wav|max:5120', // Max 5MB
+            'video' => 'nullable|file|mimes:mp4,avi,mov|max:51200',
+            'record' => 'nullable|file|mimes:mp3,wav|max:5120',
             'options' => 'required|array|min:2',
             'options.*.text' => 'required|string',
             'correct_option' => 'required|integer|min:0',

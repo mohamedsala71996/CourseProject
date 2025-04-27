@@ -22,6 +22,8 @@ class Student extends Authenticatable
         'date_of_birth',
     ];
 
+    protected $hidden = ['password'];
+
     public function subStage()
     {
         return $this->belongsTo(SubStage::class);
@@ -37,5 +39,22 @@ class Student extends Authenticatable
         return $this->image
             ? asset('storage/' . $this->image)
             : asset('default-avatar.png');
+    }
+
+    public function viewedLectures()
+    {
+        return $this->belongsToMany(Lecture::class, 'lesson_views', 'student_id', 'lecture_id')
+            ->withPivot('watched_percent', 'viewed_at')
+            ->withTimestamps();
+    }
+
+    public function studentAnswers()
+    {
+        return $this->hasMany(\App\Models\StudentAnswer::class);
+    }
+
+    public function fines()
+    {
+        return $this->hasMany(\App\Models\Fine::class);
     }
 }
