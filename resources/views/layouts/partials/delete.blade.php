@@ -6,7 +6,7 @@
  
              Swal.fire({
                  title: "هل أنت متأكد؟",
-                 text: "لن تتمكن من استعادة هذه المادة بعد الحذف!",
+                 text: "لن تتمكن من استعادة هذه البيانات بعد الحذف!",
                  icon: "warning",
                  showCancelButton: true,
                  confirmButtonColor: "#d33",

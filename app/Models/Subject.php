@@ -12,4 +12,10 @@ class Subject extends Model
     {
         return $this->belongsTo(SubStage::class);
     }
+
+
+    public function lectures()
+    {
+        return $this->hasMany(Lecture::class);
+    }
 }

@@ -12,4 +12,5 @@ class Stage extends Model
     {
         return $this->hasMany(SubStage::class);
     }
+
 }

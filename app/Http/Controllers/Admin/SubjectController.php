@@ -20,8 +20,8 @@ class SubjectController extends Controller
     // Show the form for creating a new subject
     public function create()
     {
-        $stages = Stage::all();
-        return view('admins.subjects.create', compact('stages'));
+        $subStages = SubStage::all();
+        return view('admins.subjects.create', compact('subStages'));
     }
 
     public function store(SubjectRequest $request)
@@ -29,25 +29,26 @@ class SubjectController extends Controller
         try {
 
             Subject::create($request->all());
-            return redirect()->route('admin.subjects.index')->with('success', 'تم إضافة المادة بنجاح.');
+            return redirect()->route('subjects.index')->with('success', 'تم إضافة المادة بنجاح.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء إضافة المادة.');
         }
     }
 
-    public function edit(Subject $subject)
+    public function edit($id)
     {
-        $stages = Stage::all();
-        return view('admins.subjects.edit', compact('subject', 'stages'));
+        $subject = Subject::find($id);
+        $subStages = SubStage::all();
+        return view('admins.subjects.edit', compact('subject', 'subStages'));
     }
 
-    public function update(SubjectRequest $request, Subject $subject)
+    public function update(SubjectRequest $request, $id)
     {
         try {
-
+            $subject = Subject::find($id);
             $subject->update($request->all());
-
-            return redirect()->route('admin.subjects.index')->with('success', 'تم تحديث المادة بنجاح.');
+            
+            return redirect()->route('subjects.index')->with('success', 'تم تحديث المادة بنجاح.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء تحديث المادة.');
         }
@@ -65,9 +66,15 @@ class SubjectController extends Controller
         }
     }
 
-    public function getSubStages($stage_id)
+    // public function getSubStages($stage_id)
+    // {
+    //     $subStages = SubStage::where('stage_id', $stage_id)->get();
+    //     return response()->json(['subStages' => $subStages]);
+    // }
+
+    public function getSubjects($sub_stage_id)
     {
-        $subStages = SubStage::where('stage_id', $stage_id)->get();
-        return response()->json(['subStages' => $subStages]);
+        $subjects = Subject::where('sub_stage_id', $sub_stage_id)->get();
+        return response()->json(['subjects' => $subjects]);
     }
 }

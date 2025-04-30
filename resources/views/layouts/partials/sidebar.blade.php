@@ -58,7 +58,7 @@
               </li> --}}
                       <li class="nav-item {{ request()->routeIs('subjects.*') ? 'menu-open' : '' }}">
                           <a href="#" class="nav-link {{ request()->routeIs('subjects.*') ? 'active' : '' }}">
-                              <i class="nav-icon bi bi-layers-fill"></i> <!-- Main Icon -->
+                              <i class="nav-icon bi bi-layers-fill"></i>
                               <p>
                                   المواد
                                   <i class="nav-arrow bi bi-chevron-right"></i>
@@ -66,16 +66,168 @@
                           </a>
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                  <a href="{{ route('admin.subjects.index') }}"
-                                      class="nav-link {{ request()->routeIs('admin.subjects.index') || request()->routeIs('subjects.edit') ? 'active' : '' }}">
-                                      <i class="nav-icon bi bi-grid-fill"></i> <!-- "All Subjects" Icon -->
+                                  <a href="{{ route('subjects.index') }}"
+                                      class="nav-link {{ request()->routeIs('subjects.index') || request()->routeIs('subjects.edit')  ? 'active' : '' }}">
+                                      <i class="nav-icon bi bi-grid-fill"></i>
                                       <p>الكل</p>
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a href="{{ route('subjects.create') }}"
+                                      class="nav-link {{ request()->routeIs('subjects.create') ? 'active' : '' }}">
+                                      <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                      <p>إضافة</p>
                                   </a>
                               </li>
                           </ul>
                       </li>
+                      <li class="nav-item {{ request()->routeIs('lectures.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('lectures.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-book-fill"></i>
+                            <p>
+                                المحاضرات
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('lectures.index') }}"
+                                    class="nav-link {{ request()->routeIs('lectures.index') || request()->routeIs('lectures.edit') || request()->routeIs('lectures.questions.index') || request()->routeIs('lectures.questions.edit') || request()->routeIs('lectures.questions.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('lectures.create') }}"
+                                    class="nav-link {{ request()->routeIs('lectures.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item {{ request()->routeIs('students.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('students.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة للطلاب --}}
+                            <p>
+                                تسجيل الطلاب
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('students.index') }}"
+                                   class="nav-link {{ request()->routeIs('students.index') || request()->routeIs('students.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('students.create') }}"
+                                   class="nav-link {{ request()->routeIs('students.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
+                    <li class="nav-item {{ request()->routeIs('stages.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('stages.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
+                            <p>
+                                 تسجيل مرحلة
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('stages.index') }}"
+                                   class="nav-link {{ request()->routeIs('stages.index') || request()->routeIs('stages.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('stages.create') }}"
+                                   class="nav-link {{ request()->routeIs('stages.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item {{ request()->routeIs('sub_stages.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('sub_stages.*') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-person-lines-fill"></i> {{-- أيقونة  --}}
+                            <p>
+                                 تسجيل مرحلة فرعية
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('sub_stages.index') }}"
+                                   class="nav-link {{ request()->routeIs('sub_stages.index') || request()->routeIs('sub_stages.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('sub_stages.create') }}"
+                                   class="nav-link {{ request()->routeIs('sub_stages.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
+                    <li class="nav-item {{ request()->routeIs('fines.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('fines.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-money-bill-1-wave"></i> {{-- أيقونة  --}}
+                            <p>
+                                 تسجيل غرامة
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('fines.index') }}"
+                                   class="nav-link {{ request()->routeIs('fines.index') || request()->routeIs('fines.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('fines.create') }}"
+                                   class="nav-link {{ request()->routeIs('fines.create') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-plus-circle-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item {{ request()->routeIs('fines.*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('fines.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-gears"></i>{{-- أيقونة  --}}
+                            <p>
+                                 الإعدادات
+                                <i class="nav-arrow bi bi-chevron-right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('settings.index') }}"
+                                   class="nav-link {{ request()->routeIs('settings.index') || request()->routeIs('fines.edit') ? 'active' : '' }}">
+                                    <i class="nav-icon bi bi-grid-fill"></i>
+                                    <p>إضافة</p>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                       {{--
                       <li class="nav-item menu-open">
                           <a href="#" class="nav-link active">
